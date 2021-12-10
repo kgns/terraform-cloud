@@ -7,6 +7,11 @@ export default class Workspaces extends Request {
     super(client)
   }
 
+  list(organizationName: string): Promise<Workspace[]> {
+    const path = `/organizations/${organizationName}/workspaces`
+    return this.get<Workspace[]>(path)
+  }
+
   showByName(organizationName: string, workspaceName: string): Promise<Workspace> {
     const path = `/organizations/${organizationName}/workspaces/${workspaceName}`
     return this.get<Workspace>(path)
