@@ -38,11 +38,13 @@ export interface WorkspaceAttributes {
   fileTriggersEnabled: boolean
   locked: boolean
   name: string
+  description?: string
   permissions: WorkspacePermissions
   queueAllRuns: boolean
   terraformVersion: string
   triggerPrefixes: []
-  vcsRepo: null
+  vcsRepo?: WorkspaceVcsRepo
+  vcsRepoIdentifier?: string,
   workingDirectory: string
   executionMode: 'remote' | 'local' | 'agent'
 }
@@ -55,4 +57,14 @@ export interface WorkspacePermissions {
   canUpdateVariable: boolean
   canLock: boolean
   canReadSettings: boolean
+}
+
+export interface WorkspaceVcsRepo {
+  branch?: string
+  ingressSubmodules?: boolean
+  identifier?: string
+  displayIdentifier?: string
+  githubAppInstallationId?: string
+  repositoryHttpUrl?: string
+  serviceProvider?: string
 }
